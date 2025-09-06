@@ -1,7 +1,24 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Shield, Truck, Clock } from "lucide-react";
+import { Shield, Truck, Clock, ShoppingCart, Check } from "lucide-react";
 
 const CallToAction = () => {
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const [addedToCart, setAddedToCart] = useState(false);
+
+  const handleAddToCart = async () => {
+    setIsAddingToCart(true);
+    
+    // Simulate adding to cart
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    setIsAddingToCart(false);
+    setAddedToCart(true);
+    
+    // Reset after 2 seconds
+    setTimeout(() => setAddedToCart(false), 2000);
+  };
+
   return (
     <section className="py-20 gradient-hero">
       <div className="container mx-auto px-4">
@@ -45,8 +62,31 @@ const CallToAction = () => {
               <Button variant="outline" size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4">
                 Order Now
               </Button>
-              <Button variant="ghost" size="lg" className="text-white border-white/20 hover:bg-white/10 text-lg px-8 py-4">
-                Add to Cart
+              <Button 
+                variant="ghost" 
+                size="lg" 
+                className="text-white border-white/20 hover:bg-white/10 text-lg px-8 py-4 relative overflow-hidden"
+                onClick={handleAddToCart}
+                disabled={isAddingToCart}
+              >
+                <div className="flex items-center space-x-2">
+                  {isAddingToCart ? (
+                    <>
+                      <div className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full"></div>
+                      <span>Adding...</span>
+                    </>
+                  ) : addedToCart ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      <span>Added!</span>
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingCart className="w-4 h-4" />
+                      <span>Add to Cart</span>
+                    </>
+                  )}
+                </div>
               </Button>
             </div>
 

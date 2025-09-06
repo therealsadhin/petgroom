@@ -16,7 +16,6 @@ const Checkout = () => {
       <main>
         <PageHeader
           title="Checkout"
-          subtitle="Complete your order and get your pet nail grinder delivered fast."
           breadcrumbs={breadcrumbs}
         />
         

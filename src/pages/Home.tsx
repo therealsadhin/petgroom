@@ -7,12 +7,14 @@ import FeatureGrid from "@/components/home/FeatureGrid";
 import TestimonialSection from "@/components/home/TestimonialSection";
 import FAQSection from "@/components/home/FAQSection";
 import CallToAction from "@/components/home/CallToAction";
+import LimitedOfferBanner from "@/components/home/LimitedOfferBanner";
 
 const Home = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
       <main>
+        <LimitedOfferBanner />
         <HeroSection />
         <ProductHighlight />
         <LifestyleSection />
