@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Shield, Truck, Clock, ShoppingCart, Check } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 const CallToAction = () => {
+  const { addToCart } = useCart();
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
 
@@ -12,6 +14,7 @@ const CallToAction = () => {
     // Simulate adding to cart
     await new Promise(resolve => setTimeout(resolve, 1000));
     
+    addToCart();
     setIsAddingToCart(false);
     setAddedToCart(true);
     
@@ -59,7 +62,7 @@ const CallToAction = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="outline" size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4">
+              <Button variant="outline" size="lg" className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-4" onClick={addToCart}>
                 Order Now
               </Button>
               <Button 
