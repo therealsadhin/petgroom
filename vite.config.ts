@@ -9,8 +9,8 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-   preview: {
-    allowedHosts: true
+  preview: {
+    allowedHosts: ['petgroom-1.onrender.com']
   },
   plugins: [
     react(),
