@@ -1,8 +1,8 @@
-import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import PageHeader from "@/components/shared/PageHeader";
 import BrandStory from "@/components/about/BrandStory";
 import CraftsmanshipSection from "@/components/about/CraftsmanshipSection";
+import LayoutWrapper from "@/components/layout/LayoutWrapper";
 
 const About = () => {
   const breadcrumbs = [
@@ -11,8 +11,7 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      <Navbar />
+    <LayoutWrapper>
       <main>
         <PageHeader
           title="About PetGroomer"
@@ -23,7 +22,7 @@ const About = () => {
         <CraftsmanshipSection />
       </main>
       <Footer />
-    </div>
+    </LayoutWrapper>
   );
 };
 

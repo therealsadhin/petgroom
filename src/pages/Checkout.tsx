@@ -1,8 +1,8 @@
-import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import PageHeader from "@/components/shared/PageHeader";
 import CartSummary from "@/components/checkout/CartSummary";
 import CheckoutForm from "@/components/checkout/CheckoutForm";
+import LayoutWrapper from "@/components/layout/LayoutWrapper";
 
 const Checkout = () => {
   const breadcrumbs = [
@@ -11,27 +11,28 @@ const Checkout = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      <Navbar />
+    <LayoutWrapper>
       <main>
         <PageHeader
           title="Checkout"
           breadcrumbs={breadcrumbs}
         />
         
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <section className="spacing-section bg-gradient-to-br from-emerald-50 to-white">
+          <div className="container-responsive">
+            {/* Cart Summary - Full width */}
+            <div className="mb-[var(--space-2xl)]">
+              <CartSummary />
+            </div>
+            {/* Checkout Form - Full width */}
+            <div>
               <CheckoutForm />
-              <div className="lg:order-first">
-                <CartSummary />
-              </div>
             </div>
           </div>
         </section>
       </main>
       <Footer />
-    </div>
+    </LayoutWrapper>
   );
 };
 

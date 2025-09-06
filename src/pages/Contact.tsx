@@ -1,8 +1,8 @@
-import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import PageHeader from "@/components/shared/PageHeader";
 import ContactForm from "@/components/contact/ContactForm";
 import ContactDetails from "@/components/contact/ContactDetails";
+import LayoutWrapper from "@/components/layout/LayoutWrapper";
 
 const Contact = () => {
   const breadcrumbs = [
@@ -11,8 +11,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      <Navbar />
+    <LayoutWrapper>
       <main>
         <PageHeader
           title="Contact Us"
@@ -30,7 +29,7 @@ const Contact = () => {
         </section>
       </main>
       <Footer />
-    </div>
+    </LayoutWrapper>
   );
 };
 

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import lifestyleBanner from "@/assets/lifestyle-banner.jpg";
 
 const LifestyleSection = () => {
@@ -25,11 +26,10 @@ const LifestyleSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg" className="text-lg px-8 py-4">
-                Shop Now
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-4 bg-white/10 border-white text-white hover:bg-white hover:text-black">
-                Learn More
+              <Button variant="hero" size="lg" className="text-lg px-8 py-4" asChild>
+                <Link to="/checkout">
+                  Shop Now
+                </Link>
               </Button>
             </div>
 

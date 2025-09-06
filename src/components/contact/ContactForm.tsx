@@ -14,17 +14,36 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    try {
+      // Submit to FormSubmit service
+      const response = await fetch('https://formsubmit.co/therealsadhin@gmail.com', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        setIsSubmitting(false);
+        toast({
+          title: "Message sent successfully!",
+          description: "We'll get back to you within 24 hours.",
+        });
+        
+        // Reset form
+        form.reset();
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
       setIsSubmitting(false);
       toast({
-        title: "Message sent!",
-        description: "We'll get back to you within 24 hours.",
+        title: "Error sending message",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
       });
-      
-      // Reset form
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+    }
   };
 
   return (
@@ -38,6 +57,11 @@ const ContactForm = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* FormSubmit configuration fields */}
+          <input type="hidden" name="_subject" value="New Contact Form Submission - PetGroomer" />
+          <input type="hidden" name="_next" value={window.location.origin + "/contact"} />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="firstName">First Name</Label>

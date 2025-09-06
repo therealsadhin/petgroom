@@ -43,6 +43,21 @@
     --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(15 85% 75%));
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 15% 98%));
 
+    /* Responsive spacing scale */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+
+    /* Fluid spacing that adapts to viewport */
+    --space-fluid-sm: clamp(0.5rem, 2vw, 1rem);
+    --space-fluid-md: clamp(1rem, 4vw, 2rem);
+    --space-fluid-lg: clamp(1.5rem, 6vw, 4rem);
+    --space-fluid-xl: clamp(2rem, 8vw, 6rem);
+
     /* Elegant Shadows */
     --shadow-soft: 0 4px 20px -5px hsl(var(--primary) / 0.15);
     --shadow-elegant: 0 10px 40px -10px hsl(var(--primary) / 0.25);
@@ -120,12 +135,36 @@
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-  }
-
   html {
     scroll-behavior: smooth;
+    /* Base font size for rem calculations */
+    font-size: 16px;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    /* Responsive typography using rem units */
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Responsive typography scale */
+  h1 { font-size: clamp(1.875rem, 4vw, 3.75rem); line-height: 1.2; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.3; }
+  h3 { font-size: clamp(1.25rem, 2.5vw, 1.875rem); line-height: 1.4; }
+  h4 { font-size: clamp(1.125rem, 2vw, 1.5rem); line-height: 1.4; }
+  
+  /* Responsive text blocks with optimal line lengths */
+  .text-block {
+    max-width: 65ch; /* ~60-80 characters per line */
+    line-height: 1.7;
+  }
+
+  /* Ensure images are responsive by default */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
 }
 
@@ -156,6 +195,161 @@
 
   .animate-float {
     animation: float 3s ease-in-out infinite;
+  }
+
+  /* Responsive container with fluid grid */
+  .container-responsive {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-responsive {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-responsive {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Flexible grid utilities using CSS Grid with minmax */
+  .grid-responsive {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr; /* Mobile-first: single column */
+  }
+
+  @media (min-width: 640px) {
+    .grid-responsive {
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-responsive {
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  }
+
+  /* Two-column responsive layout */
+  .grid-two-col {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .grid-two-col {
+      gap: 2rem;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-two-col {
+      gap: 3rem;
+    }
+  }
+
+  /* Responsive spacing utilities */
+  .spacing-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .spacing-section {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .spacing-section {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  /* Responsive text sizing */
+  .text-responsive-lg {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  }
+
+  .text-responsive-xl {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  /* Image modal utilities */
+  .modal-backdrop {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .image-zoom-cursor {
+    cursor: zoom-in;
+  }
+
+  .image-zoom-cursor:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
+  }
+
+  /* Mobile touch optimization */
+  @media (max-width: 768px) {
+    .touch-callout-none {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    
+    .mobile-image-hint {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      opacity: 0;
+      animation: fadeInOut 3s ease-in-out;
+    }
+    
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0; }
+      20%, 80% { opacity: 1; }
+    }
+
+    /* Improve mobile modal interaction */
+    .mobile-modal {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      z-index: 9999 !important;
+      touch-action: manipulation;
+    }
+
+    /* Better touch targets */
+    .touch-target {
+      min-height: 44px;
+      min-width: 44px;
+      touch-action: manipulation;
+    }
   }
 
   @keyframes float {

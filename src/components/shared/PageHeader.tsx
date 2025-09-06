@@ -9,14 +9,14 @@ interface PageHeaderProps {
 
 const PageHeader = ({ title, subtitle, breadcrumbs }: PageHeaderProps) => {
   return (
-    <section className="py-20 gradient-subtle">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
+    <section className="spacing-section gradient-subtle">
+      <div className="container-responsive">
+        <div className="max-w-4xl mx-auto text-center space-y-[var(--space-fluid-md)]">
           {/* Breadcrumbs */}
           {breadcrumbs && breadcrumbs.length > 0 && (
-            <nav className="flex items-center justify-center space-x-2 text-sm text-muted-foreground">
+            <nav className="flex items-center justify-center space-x-[var(--space-sm)] text-sm text-muted-foreground flex-wrap">
               {breadcrumbs.map((crumb, index) => (
-                <div key={index} className="flex items-center space-x-2">
+                <div key={index} className="flex items-center space-x-[var(--space-sm)]">
                   {crumb.href ? (
                     <Link to={crumb.href} className="hover:text-primary transition-colors">
                       {crumb.label}
@@ -25,7 +25,7 @@ const PageHeader = ({ title, subtitle, breadcrumbs }: PageHeaderProps) => {
                     <span className="text-foreground">{crumb.label}</span>
                   )}
                   {index < breadcrumbs.length - 1 && (
-                    <ChevronRight className="w-4 h-4" />
+                    <ChevronRight className="w-4 h-4 flex-shrink-0" />
                   )}
                 </div>
               ))}
@@ -33,15 +33,17 @@ const PageHeader = ({ title, subtitle, breadcrumbs }: PageHeaderProps) => {
           )}
 
           {/* Title */}
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight">
+          <h1 className="font-bold text-foreground leading-tight">
             {title}
           </h1>
 
           {/* Subtitle */}
           {subtitle && (
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              {subtitle}
-            </p>
+            <div className="text-block mx-auto">
+              <p className="text-responsive-xl text-muted-foreground">
+                {subtitle}
+              </p>
+            </div>
           )}
         </div>
       </div>

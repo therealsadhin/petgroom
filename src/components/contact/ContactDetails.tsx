@@ -5,33 +5,33 @@ const ContactDetails = () => {
     {
       icon: Mail,
       title: "Email",
-      details: "support@petgroomer.com",
-      subDetails: "We respond within 2 hours"
+      details: "therealsadhin@gmail.com",
+      subDetails: "We respond within 24 hours"
     },
     {
       icon: Phone,
       title: "Phone",
-      details: "+1 (555) 123-4567",
-      subDetails: "Mon-Fri, 9AM-6PM EST"
+      details: "+8801540318111",
+      subDetails: "24/7 Support Available"
     },
     {
       icon: MapPin,
       title: "Address",
-      details: "123 Pet Care Lane",
-      subDetails: "New York, NY 10001"
+      details: "Rangpur, Bangladesh",
+      subDetails: "Professional Pet Care Services"
     },
     {
       icon: Clock,
       title: "Business Hours",
-      details: "Monday - Friday: 9AM - 6PM EST",
-      subDetails: "Weekend: Emergency support only"
+      details: "24/7 Customer Support",
+      subDetails: "Always here to help you and your pet"
     }
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" }
+    { icon: Facebook, href: "https://facebook.com/petgroom", label: "Facebook" },
+    { icon: Twitter, href: "https://twitter.com/petgroom", label: "Twitter" },
+    { icon: Instagram, href: "https://instagram.com/petgroom", label: "Instagram" }
   ];
 
   return (

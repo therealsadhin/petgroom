@@ -4,25 +4,27 @@ import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from "lucide-react"
 const Footer = () => {
   return (
     <footer className="bg-muted/50 border-t border-border">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="container-responsive spacing-section">
+        <div className="grid-responsive max-w-5xl mx-auto">
           {/* Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+          <div className="space-y-[var(--space-lg)] text-center sm:text-left">
+            <div className="flex items-center justify-center sm:justify-start space-x-[var(--space-sm)]">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
                 <span className="text-primary-foreground font-bold text-sm">PG</span>
               </div>
-              <span className="text-xl font-bold text-foreground">PetGroomer</span>
+              <span className="text-responsive-xl font-bold text-foreground">PetGroomer</span>
             </div>
-            <p className="text-muted-foreground text-sm">
-              Professional pet grooming tools for happy, healthy pets.
-            </p>
+            <div className="text-block mx-auto sm:mx-0">
+              <p className="text-muted-foreground text-sm">
+                Professional pet grooming tools for happy, healthy pets.
+              </p>
+            </div>
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
+          <div className="space-y-[var(--space-lg)] text-center sm:text-left">
             <h3 className="font-semibold text-foreground">Quick Links</h3>
-            <div className="space-y-2">
+            <div className="space-y-[var(--space-sm)]">
               <Link to="/" className="block text-muted-foreground hover:text-foreground transition-colors">
                 Home
               </Link>
@@ -36,42 +38,42 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-4">
+          <div className="space-y-[var(--space-lg)] text-center sm:text-left">
             <h3 className="font-semibold text-foreground">Contact</h3>
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <Mail className="w-4 h-4" />
-                <span className="text-sm">support@petgroomer.com</span>
+            <div className="space-y-[var(--space-sm)]">
+              <div className="flex items-center justify-center sm:justify-start space-x-[var(--space-sm)] text-muted-foreground">
+                <Mail className="w-4 h-4 flex-shrink-0" />
+                <span className="text-sm break-all">therealsadhin@gmail.com</span>
               </div>
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <Phone className="w-4 h-4" />
-                <span className="text-sm">+1 (555) 123-4567</span>
+              <div className="flex items-center justify-center sm:justify-start space-x-[var(--space-sm)] text-muted-foreground">
+                <Phone className="w-4 h-4 flex-shrink-0" />
+                <span className="text-sm">+8801540318111</span>
               </div>
-              <div className="flex items-center space-x-2 text-muted-foreground">
-                <MapPin className="w-4 h-4" />
-                <span className="text-sm">New York, NY</span>
+              <div className="flex items-center justify-center sm:justify-start space-x-[var(--space-sm)] text-muted-foreground">
+                <MapPin className="w-4 h-4 flex-shrink-0" />
+                <span className="text-sm">Rangpur, Bangladesh</span>
               </div>
             </div>
           </div>
 
           {/* Social Links */}
-          <div className="space-y-4">
+          <div className="space-y-[var(--space-lg)] text-center sm:text-left">
             <h3 className="font-semibold text-foreground">Follow Us</h3>
-            <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+            <div className="flex justify-center sm:justify-start space-x-[var(--space-lg)]">
+              <a href="https://facebook.com/petgroom" className="text-muted-foreground hover:text-primary transition-colors p-2" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://twitter.com/petgroom" className="text-muted-foreground hover:text-primary transition-colors p-2" aria-label="Twitter">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://instagram.com/petgroom" className="text-muted-foreground hover:text-primary transition-colors p-2" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-border mt-8 pt-8 text-center">
+        <div className="border-t border-border mt-[var(--space-2xl)] pt-[var(--space-2xl)] text-center">
           <p className="text-muted-foreground text-sm">
             © 2024 PetGroomer. All rights reserved.
           </p>
