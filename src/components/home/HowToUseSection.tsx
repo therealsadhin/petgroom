@@ -2,20 +2,17 @@ import { Play, Shield, Zap, Volume2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
-// Import videos
-import video1 from "@/assets/petgromer_videos/pet groom nail grinder video.mp4";
-import video2 from "@/assets/petgromer_videos/pet grommer nail grinder video 2.mp4";
+// YouTube video URLs
+const video1Url = "https://youtube.com/shorts/lTnvfPqhdN8";
+const video2Url = "https://youtube.com/shorts/edCPEbWOOBo";
+
+// Convert YouTube URLs to embed format
+const getYouTubeEmbedUrl = (url: string) => {
+  const videoId = url.split('/').pop();
+  return `https://www.youtube.com/embed/${videoId}`;
+};
 
 const HowToUseSection = () => {
-  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
-
-  const handleVideoPlay = (videoId: string) => {
-    setPlayingVideo(videoId);
-  };
-
-  const handleVideoPause = () => {
-    setPlayingVideo(null);
-  };
 
   return (
     <section className="py-20 bg-gradient-to-br from-emerald-50 to-blue-50">
@@ -76,33 +73,16 @@ const HowToUseSection = () => {
 
           <div className="relative">
             <div className="bg-white rounded-2xl shadow-elegant p-6">
-              <video
-                className="w-full rounded-xl"
-                controls
-                poster=""
-                onPlay={() => handleVideoPlay('video1')}
-                onPause={handleVideoPause}
-                style={{ aspectRatio: '16/9' }}
-              >
-                <source src={video1} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              
-              {playingVideo !== 'video1' && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-2xl">
-                  <Button
-                    variant="hero"
-                    size="lg"
-                    className="rounded-full h-16 w-16 p-0"
-                    onClick={() => {
-                      const video = document.querySelector('video') as HTMLVideoElement;
-                      if (video) video.play();
-                    }}
-                  >
-                    <Play className="w-8 h-8 ml-1" />
-                  </Button>
-                </div>
-              )}
+              <div className="w-full rounded-xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                <iframe
+                  src={getYouTubeEmbedUrl(video1Url)}
+                  title="Pet Nail Grinder Tutorial - Step 1"
+                  className="w-full h-full rounded-xl"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
@@ -111,33 +91,16 @@ const HowToUseSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1 relative">
             <div className="bg-white rounded-2xl shadow-elegant p-6">
-              <video
-                className="w-full rounded-xl"
-                controls
-                poster=""
-                onPlay={() => handleVideoPlay('video2')}
-                onPause={handleVideoPause}
-                style={{ aspectRatio: '16/9' }}
-              >
-                <source src={video2} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              
-              {playingVideo !== 'video2' && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-2xl">
-                  <Button
-                    variant="hero"
-                    size="lg"
-                    className="rounded-full h-16 w-16 p-0"
-                    onClick={() => {
-                      const videos = document.querySelectorAll('video') as NodeListOf<HTMLVideoElement>;
-                      if (videos[1]) videos[1].play();
-                    }}
-                  >
-                    <Play className="w-8 h-8 ml-1" />
-                  </Button>
-                </div>
-              )}
+              <div className="w-full rounded-xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                <iframe
+                  src={getYouTubeEmbedUrl(video2Url)}
+                  title="Pet Nail Grinder Tutorial - Step 2"
+                  className="w-full h-full rounded-xl"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
             </div>
           </div>
 
